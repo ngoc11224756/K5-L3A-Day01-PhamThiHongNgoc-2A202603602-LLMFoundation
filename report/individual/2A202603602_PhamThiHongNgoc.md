@@ -26,8 +26,30 @@
 | 3c. Encoder (MiniLM) + MLP head | 0.959 | 0.974 | 65.109 | 0.0 |
 
 ## 3. Dự đoán và thực tế
+3 dự đoán tôi chọn:
+1. dl_curve – So sánh MLP và Logistic Regression
 
-*Chọn 3 dự đoán `predict(...)` lệch nhiều nhất so với kết quả. Mỗi cái: bạn đoán gì, ra gì, vì sao lệch.*
+Dự đoán: Ban đầu, em nghĩ MLP sẽ có kết quả F1 gần tương đương Logistic Regression vì cả hai đều được huấn luyện trên cùng bộ dữ liệu.
+
+Kết quả thực tế: MLP đạt F1 = 0.945, cao hơn Logistic Regression (0.877). Recall của MLP cũng đạt 0.897, so với 0.782 của Logistic Regression.
+
+Vì sao lệch: Em chưa đánh giá đúng khả năng của MLP. MLP có thể học được những mối quan hệ phức tạp giữa các từ nên nhận diện được nhiều tin nhắn spam hơn Logistic Regression.
+
+2. emb_tricky – So sánh embedding và BoW
+
+Dự đoán: Em nghĩ mô hình sử dụng embedding (3b) sẽ phân loại chính xác hơn BoW vì embedding có khả năng nắm bắt ý nghĩa ngữ cảnh của từ.
+
+Kết quả thực tế: Hai phương pháp cho kết quả ngang nhau, cùng phân loại đúng 4/6 tin nhắn.
+
+Vì sao lệch: Em nghĩ embedding sẽ tốt hơn, nhưng thực tế mỗi phương pháp nhận diện tốt những cụm từ khác nhau. Hơn nữa, chỉ thử trên 6 tin nhắn nên chưa thể kết luận embedding tốt hơn BoW.
+
+3. ml_lr – Ảnh hưởng của learning rate
+
+Dự đoán: Em dự đoán learning rate = 50 sẽ khiến loss dao động mạnh trong quá trình huấn luyện do bước cập nhật trọng số quá lớn.
+
+Kết quả thực tế: Loss chỉ tăng vọt lên khoảng 2.7 trong vài epoch đầu, sau đó giảm nhanh về khoảng 0.004.
+
+Vì sao lệch: Em nghĩ learning rate lớn sẽ khiến loss liên tục dao động, nhưng thực tế mô hình chỉ bị tăng loss lúc đầu rồi nhanh chóng giảm xuống. Có thể do dữ liệu trong thí nghiệm khá dễ phân loại nên mô hình nhanh chóng học được cách phân biệt hai nhóm.
 
 ## 4. Phân tích 50 case khó
 
