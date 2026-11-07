@@ -10,13 +10,20 @@
 
 | Tệp | Có? |
 | --- | --- |
-| [`day01_lab.ipynb`](day01_lab.ipynb) — notebook đã chạy, còn output | ☐ |
-| [`lab1_report.json`](lab1_report.json) — do ô "Báo cáo cuối" sinh ra | ☐ |
-| [`hand_calc.jpg`](hand_calc.jpg) — ảnh tính tay có các bước | ☐ |
+| [`day01_lab.ipynb`](day01_lab.ipynb) — notebook đã chạy, còn output | ✅ |
+| [`lab1_report.json`](lab1_report.json) — do ô "Báo cáo cuối" sinh ra | ✅ |
+| [`hand_calc.jpg`](hand_calc.jpg) — ảnh tính tay có các bước | ✅|
 
 ## 2. Kết quả chính
 
 *Chép bảng so sánh cuối Phần 5 (F1 test, F1 SUB 40, p95 ms/tin, USD/1k tin) của chính bạn.*
+| Phương án | F1 test | F1 SUB 40 | p95 ms/tin | USD/1k tin |
+|---|---|---|---|---|
+| 1. BoW + LogReg (tự code) | 0.877 | 0.857 | 0.100 | 0.0 |
+| 2. BoW + MLP (deep learning) | 0.945 | 0.889 | 0.352 | 0.0 |
+| 3a. Encoder (MiniLM) + kNN | 0.906 | 0.923 | 62.693 | 0.0 |
+| 3b. Encoder (MiniLM) + LogReg | 0.959 | 0.974 | 64.724 | 0.0 |
+| 3c. Encoder (MiniLM) + MLP head | 0.959 | 0.974 | 65.109 | 0.0 |
 
 ## 3. Dự đoán và thực tế
 
