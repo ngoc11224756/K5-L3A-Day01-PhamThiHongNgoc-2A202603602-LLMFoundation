@@ -1,0 +1,135 @@
+{
+ "seed": 9952,
+ "predictions": {
+  "1.4": {
+   "text": "F1 ~0.85, precision cao hơn recall vì spam chỉ ~13% nên mô hình thận trọng khi gắn nhãn spam, đã đoán spam thì thường đúng, nhưng có thể bỏ sót spam viết lạ nếu từ nằm ngoài từ điển 2000 từ.",
+   "time": "12:13:54"
+  },
+  "ml_f1": {
+   "text": "F1 ~0.85, precision cao hơn recall vì spam chỉ ~13% nên mô hình thận trọng khi gắn nhãn spam, đã đoán spam thì thường đúng, nhưng có thể bỏ sót spam viết lạ nếu từ nằm ngoài từ điển 2000 từ.",
+   "time": "12:16:53"
+  },
+  "ml_lr": {
+   "text": "lr=0.001 thì loss giảm chậm, vì bước nhảy nhỏ), lr=50 thì loss dao động mạnh, vì bước nhảy dài, có thể nhảy qua điểm tốt nhất)",
+   "time": "12:32:22"
+  },
+  "dl_curve": {
+   "text": "(1) val loss có thể không giảm mãi vì MLP có 128.129 tham số nhưng chỉ có 3.619 tin train (đã tính ở trên), nên mạng có đủ sức học thuộc tập train. (2)MLP MLP sẽ xấp xỉ bằng logistic regression ở Phần 1 về F1 ",
+   "time": "13:55:19"
+  },
+  "dl_relu": {
+   "text": "Nếu bỏ ReLU thì mạng 2 lớp Linear liên tiếp suy biến thành logistic regression vì ReLU là phần phi tuyến duy nhất, nếu thiếu thì thêm bao nhiêu lớp Linear cũng chỉ ra một hàm tuyến tính",
+   "time": "14:34:44"
+  },
+  "emb_search": {
+   "text": "Dự đoán: kết quả gần nhất là spam",
+   "time": "14:55:30"
+  },
+  "emb_tricky": {
+   "text": "3b (Encoder + LogReg) đoán đúng nhiều hơn",
+   "time": "15:04:26"
+  }
+ },
+ "checks": {
+  "1.1 vectorize": true,
+  "1.2 sigmoid / predict_proba": true,
+  "1.3 train_logreg": true,
+  "1.4 metrics": true,
+  "2.1 build_mlp": true,
+  "2.2 train_mlp": true,
+  "3.1–3.2 cosine / top_k_similar": true,
+  "3.3 knn_predict": true
+ },
+ "experiments": [
+  {
+   "key": "1.4",
+   "time": "12:14:55"
+  },
+  {
+   "key": "ml_f1",
+   "time": "12:16:54"
+  },
+  {
+   "key": "ml_lr",
+   "time": "12:32:30"
+  },
+  {
+   "key": "dl_curve",
+   "time": "13:55:20"
+  },
+  {
+   "key": "dl_relu",
+   "time": "14:34:47"
+  },
+  {
+   "key": "emb_search",
+   "time": "14:55:32"
+  },
+  {
+   "key": "emb_tricky",
+   "time": "15:04:28"
+  }
+ ],
+ "results": {
+  "1. BoW + LogReg (tự code)": {
+   "accuracy": 0.9754838709677419,
+   "precision": 1.0,
+   "recall": 0.7816091954022989,
+   "f1": 0.8774193548387098,
+   "f1_SUB": 0.8571428571428571,
+   "train_s": 3.5676001840001845,
+   "msg_per_s": 16940.90235071016,
+   "p50_ms": 0.07097249999787891,
+   "p95_ms": 0.0997303997110066,
+   "usd_per_1k": 0.0
+  },
+  "2. BoW + MLP (deep learning)": {
+   "accuracy": 0.9883870967741936,
+   "precision": 1.0,
+   "recall": 0.896551724137931,
+   "f1": 0.9454545454545454,
+   "f1_SUB": 0.888888888888889,
+   "train_s": 11.366620902999784,
+   "msg_per_s": 17505.66460781179,
+   "p50_ms": 0.2945560008811299,
+   "p95_ms": 0.35159564895366197,
+   "usd_per_1k": 0.0
+  },
+  "3a. Encoder (MiniLM) + kNN": {
+   "accuracy": 0.9780645161290322,
+   "precision": 0.8723404255319149,
+   "recall": 0.9425287356321839,
+   "f1": 0.9060773480662984,
+   "f1_SUB": 0.9230769230769231,
+   "train_s": 84.56847680400097,
+   "msg_per_s": 21.25027316927954,
+   "p50_ms": 46.48246550004842,
+   "p95_ms": 62.6927013498971,
+   "usd_per_1k": 0.0
+  },
+  "3b. Encoder (MiniLM) + LogReg": {
+   "accuracy": 0.9909677419354839,
+   "precision": 0.9761904761904762,
+   "recall": 0.9425287356321839,
+   "f1": 0.95906432748538,
+   "f1_SUB": 0.9743589743589743,
+   "train_s": 85.05564136200155,
+   "msg_per_s": 25.432341226876364,
+   "p50_ms": 46.47063849915867,
+   "p95_ms": 64.72354124935009,
+   "usd_per_1k": 0.0
+  },
+  "3c. Encoder (MiniLM) + MLP head": {
+   "accuracy": 0.9909677419354839,
+   "precision": 0.9761904761904762,
+   "recall": 0.9425287356321839,
+   "f1": 0.95906432748538,
+   "f1_SUB": 0.9743589743589743,
+   "train_s": 85.53407174700078,
+   "msg_per_s": 25.073283610180013,
+   "p50_ms": 46.83795450000616,
+   "p95_ms": 65.10940400003165,
+   "usd_per_1k": 0.0
+  }
+ }
+}
