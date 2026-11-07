@@ -80,6 +80,6 @@ Vì sao lệch: Em nghĩ learning rate lớn sẽ khiến loss liên tục dao �
 | Phân tích kết quả | Hỏi cách đọc kết quả thực nghiệm, so sánh mô hình và giải thích các chỉ số đánh giá | Hướng dẫn cách diễn giải kết quả và gợi ý các yếu tố cần xem xét | Tự chạy thực nghiệm, ghi nhận số liệu và đưa ra nhận xét |
 | Câu hỏi lý thuyết | Hỏi về data leakage, learning rate, overfitting và các vấn đề liên quan đến ML/DL | Giải thích bản chất, nguyên nhân, hậu quả và gợi ý các ý chính để trả lời | Tự tổng hợp và diễn đạt lại bằng lời của mình |
 | Gỡ lỗi | Gửi thông báo lỗi hoặc đoạn code chưa chạy đúng để hỏi nguyên nhân và cách khắc phục | Phân tích lỗi, giải thích nguyên nhân và hướng dẫn các bước kiểm tra | Tự chỉnh sửa code, chạy lại và xác nhận kết quả |
-| Hoàn thiện bài nộp | Hỏi cách kiểm tra TODO, chuẩn bị notebook, file báo cáo và cấu trúc thư mục nộp bài | Hướng dẫn kiểm tra các yêu cầu của BTC và quy trình upload lên GitHub | Tự kiểm tra, chuẩn bị file và commit lên repository |
+
 
 Qua bài lab này, em được ôn lại cách làm việc với github 1 cách rõ ràng và chuyên nghiệp hơn. Hiểu thêm về các mô hình học máy
